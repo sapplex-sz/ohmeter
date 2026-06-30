@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32B743F602B9D23E718E33AA /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3565A1BA8584423123A55D /* StatusBarManager.swift */; };
+		55143686B508E41ED274A06C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE4A7CE966FD8EA1A7F2AF0 /* Assets.xcassets */; };
+		5E2E4B1DD8CD96F58598CFE7 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27FBBBAA30327445BB4CE9A /* SettingsStore.swift */; };
+		9FFF10E0F436794BC3C92AB6 /* OhMeterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89E3B1C0C8C671A8BB24BD /* OhMeterApp.swift */; };
+		A98682A16D898E78BED9864D /* CodexAppServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A03912D764E44CAFDE99E7 /* CodexAppServer.swift */; };
+		BD6ED4B25ED0F5F0E8121E12 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713046CFABF3FF4DBD916A6B /* Strings.swift */; };
+		EAF496A6721025BADCE5009A /* QuotaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D834497401DDB07308A0ED6 /* QuotaModels.swift */; };
+		F576D35D4C6D3F80BD2CD0F5 /* BatteryIconRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA2707B90B9EC923C7B3D7F /* BatteryIconRenderer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3EE4A7CE966FD8EA1A7F2AF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		713046CFABF3FF4DBD916A6B /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		7D834497401DDB07308A0ED6 /* QuotaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaModels.swift; sourceTree = "<group>"; };
+		7DA2707B90B9EC923C7B3D7F /* BatteryIconRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryIconRenderer.swift; sourceTree = "<group>"; };
+		92E44E9A7112B584E836CAAF /* OhMeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhMeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98A75F895284376FD762569E /* OhMeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhMeter.entitlements; sourceTree = "<group>"; };
+		AA2C7C1DC19A0783B83E2C46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B27FBBBAA30327445BB4CE9A /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		C6A03912D764E44CAFDE99E7 /* CodexAppServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexAppServer.swift; sourceTree = "<group>"; };
+		CA3565A1BA8584423123A55D /* StatusBarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
+		DF89E3B1C0C8C671A8BB24BD /* OhMeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhMeterApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		01552BB8E996BFA508D33683 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92E44E9A7112B584E836CAAF /* OhMeter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		039A563F640E66C2CD5F3F3E /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				7DA2707B90B9EC923C7B3D7F /* BatteryIconRenderer.swift */,
+				CA3565A1BA8584423123A55D /* StatusBarManager.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		1517D0DE55C403CDF3C224B5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				713046CFABF3FF4DBD916A6B /* Strings.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		445C46D72A1A8B2D3C4A7FA9 /* OhMeter */ = {
+			isa = PBXGroup;
+			children = (
+				57792AD2E79675676A0098EA /* Core */,
+				1517D0DE55C403CDF3C224B5 /* Localization */,
+				039A563F640E66C2CD5F3F3E /* MenuBar */,
+				93FDB256C9EA37E00E368604 /* State */,
+				3EE4A7CE966FD8EA1A7F2AF0 /* Assets.xcassets */,
+				AA2C7C1DC19A0783B83E2C46 /* Info.plist */,
+				98A75F895284376FD762569E /* OhMeter.entitlements */,
+				DF89E3B1C0C8C671A8BB24BD /* OhMeterApp.swift */,
+			);
+			path = OhMeter;
+			sourceTree = "<group>";
+		};
+		57792AD2E79675676A0098EA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C6A03912D764E44CAFDE99E7 /* CodexAppServer.swift */,
+				7D834497401DDB07308A0ED6 /* QuotaModels.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5EE7F644B59293576D5341AD = {
+			isa = PBXGroup;
+			children = (
+				445C46D72A1A8B2D3C4A7FA9 /* OhMeter */,
+				01552BB8E996BFA508D33683 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93FDB256C9EA37E00E368604 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				B27FBBBAA30327445BB4CE9A /* SettingsStore.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D39AFE364757C2FE774B8621 /* OhMeter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47C9D8A6F90CF7A2E81A7B2C /* Build configuration list for PBXNativeTarget "OhMeter" */;
+			buildPhases = (
+				F003DCA9CDDE961AA67AEAB5 /* Sources */,
+				E730D45DE5171425D38FEEA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OhMeter;
+			packageProductDependencies = (
+			);
+			productName = OhMeter;
+			productReference = 92E44E9A7112B584E836CAAF /* OhMeter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D64B39CAD831611BA60E48D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					D39AFE364757C2FE774B8621 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1B52EBE064B8424465DB73F4 /* Build configuration list for PBXProject "OhMeter" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5EE7F644B59293576D5341AD;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 01552BB8E996BFA508D33683 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D39AFE364757C2FE774B8621 /* OhMeter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E730D45DE5171425D38FEEA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55143686B508E41ED274A06C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F003DCA9CDDE961AA67AEAB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F576D35D4C6D3F80BD2CD0F5 /* BatteryIconRenderer.swift in Sources */,
+				A98682A16D898E78BED9864D /* CodexAppServer.swift in Sources */,
+				9FFF10E0F436794BC3C92AB6 /* OhMeterApp.swift in Sources */,
+				EAF496A6721025BADCE5009A /* QuotaModels.swift in Sources */,
+				5E2E4B1DD8CD96F58598CFE7 /* SettingsStore.swift in Sources */,
+				32B743F602B9D23E718E33AA /* StatusBarManager.swift in Sources */,
+				BD6ED4B25ED0F5F0E8121E12 /* Strings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		076801B9608E91484AB2E2CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OhMeter/OhMeter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 8D9AHY5YW8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = OhMeter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OhMeter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ohmeter.app;
+				PRODUCT_NAME = OhMeter;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		9CFE60B685792584AD9BA6FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8D9AHY5YW8;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CB7128B00856F3AD5516C08E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OhMeter/OhMeter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 8D9AHY5YW8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = OhMeter/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OhMeter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ohmeter.app;
+				PRODUCT_NAME = OhMeter;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		DA408EC6FAE2CD4E5E1D9B9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8D9AHY5YW8;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B52EBE064B8424465DB73F4 /* Build configuration list for PBXProject "OhMeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CFE60B685792584AD9BA6FF /* Debug */,
+				DA408EC6FAE2CD4E5E1D9B9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		47C9D8A6F90CF7A2E81A7B2C /* Build configuration list for PBXNativeTarget "OhMeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				076801B9608E91484AB2E2CE /* Debug */,
+				CB7128B00856F3AD5516C08E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D64B39CAD831611BA60E48D5 /* Project object */;
+}

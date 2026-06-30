@@ -1,0 +1,21 @@
+.DS_Store
+
+# Xcode user state
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+
+# Build outputs
+build/
+DerivedData/
+*.xcarchive/
+*.ipa
+*.pkg
+*.dmg
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Local review/submission materials
+AppReview/
