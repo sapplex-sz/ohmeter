@@ -32,6 +32,10 @@ xcodegen generate
 
 OhMeter is an independent, unofficial utility. It is not affiliated with OpenAI.
 
+## Support
+
+If you need help, open an issue at <https://github.com/sapplex-sz/ohmeter/issues> or email <sapplex@qq.com>.
+
 ## License
 
 OhMeter is released under the MIT License. See `LICENSE` for details.

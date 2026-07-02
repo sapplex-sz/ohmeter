@@ -38,6 +38,7 @@ final class StatusBarManager: NSObject, NSMenuDelegate {
     private var loginItem: NSMenuItem!
 
     private let menuMinWidth: CGFloat = 360
+    private var accessPanel: NSOpenPanel?
 
     // MARK: - Init
 
@@ -432,6 +433,11 @@ final class StatusBarManager: NSObject, NSMenuDelegate {
     }
 
     @objc private func authorizeCodexAccess() {
+        guard accessPanel == nil else {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            return
+        }
+
         let l = lang
         let panel = NSOpenPanel()
         panel.title = L.tr(l, zh: "授权 Codex 数据目录", en: "Authorize Codex Data Folder")
@@ -450,21 +456,33 @@ final class StatusBarManager: NSObject, NSMenuDelegate {
         let defaultCodexHome = SettingsStore.defaultCodexHomeURL()
         panel.directoryURL = defaultCodexHome.deletingLastPathComponent()
 
-        guard panel.runModal() == .OK, let selectedURL = panel.url else {
-            return
-        }
+        accessPanel = panel
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        panel.begin { [weak self, weak panel] response in
+            guard let self else { return }
+            defer { self.accessPanel = nil }
 
-        let codexHomeURL = normalizedCodexHomeURL(from: selectedURL)
-        guard confirmCodexHomeIfNeeded(codexHomeURL) else {
+            guard response == .OK, let selectedURL = panel?.url else {
+                return
+            }
+
+            self.finishCodexAccessAuthorization(selectedURL: selectedURL)
+        }
+    }
+
+    private func finishCodexAccessAuthorization(selectedURL: URL) {
+        let accessTarget = codexAccessTarget(from: selectedURL)
+        guard confirmCodexHomeIfNeeded(accessTarget.codexHomeURL) else {
             return
         }
 
         do {
-            try settings.saveCodexHomeAccess(url: codexHomeURL)
+            try settings.saveCodexHomeAccess(url: accessTarget.bookmarkURL, relativePath: accessTarget.relativePath)
             server.terminate()
             isRefreshing = false
             errorMessage = nil
             updateMenuContent()
+            showCodexAccessSuccess(codexHomeURL: accessTarget.codexHomeURL)
             refreshNow()
         } catch {
             showCodexAccessError(error)
@@ -559,17 +577,17 @@ final class StatusBarManager: NSObject, NSMenuDelegate {
         NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Applications/System Settings.app"))
     }
 
-    private func normalizedCodexHomeURL(from selectedURL: URL) -> URL {
+    private func codexAccessTarget(from selectedURL: URL) -> (bookmarkURL: URL, codexHomeURL: URL, relativePath: String?) {
         if selectedURL.lastPathComponent == ".codex" {
-            return selectedURL
+            return (selectedURL, selectedURL, nil)
         }
 
         let nestedCodexHome = selectedURL.appendingPathComponent(".codex", isDirectory: true)
         if FileManager.default.fileExists(atPath: nestedCodexHome.path) {
-            return nestedCodexHome
+            return (selectedURL, nestedCodexHome, ".codex")
         }
 
-        return selectedURL
+        return (selectedURL, selectedURL, nil)
     }
 
     private func confirmCodexHomeIfNeeded(_ url: URL) -> Bool {
@@ -596,6 +614,19 @@ final class StatusBarManager: NSObject, NSMenuDelegate {
         let alert = NSAlert()
         alert.messageText = L.tr(l, zh: "无法保存 Codex 数据目录授权", en: "Unable to Save Codex Access")
         alert.informativeText = error.localizedDescription
+        alert.addButton(withTitle: L.tr(l, zh: "好", en: "OK"))
+        alert.runModal()
+    }
+
+    private func showCodexAccessSuccess(codexHomeURL: URL) {
+        let l = lang
+        let alert = NSAlert()
+        alert.messageText = L.tr(l, zh: "Codex 数据目录已授权", en: "Codex Data Folder Authorized")
+        alert.informativeText = L.tr(
+            l,
+            zh: "OhMeter 将读取此目录中的本机 Codex 用量记录，并立即刷新。\n\n目录：\(codexHomeURL.path)",
+            en: "OhMeter will read local Codex usage records from this folder and refresh now.\n\nFolder: \(codexHomeURL.path)"
+        )
         alert.addButton(withTitle: L.tr(l, zh: "好", en: "OK"))
         alert.runModal()
     }

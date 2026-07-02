@@ -16,6 +16,7 @@ final class SettingsStore {
         static let cacheData = "ohmeter.codexCache"
         static let cacheTimestamp = "ohmeter.cacheTimestamp"
         static let codexHomeBookmark = "ohmeter.codexHomeBookmark"
+        static let codexHomeRelativePath = "ohmeter.codexHomeRelativePath"
     }
 
     // MARK: - Display Mode
@@ -52,11 +53,12 @@ final class SettingsStore {
 
     struct ScopedCodexHomeAccess {
         let url: URL
+        fileprivate let scopedURL: URL
         fileprivate let didStartAccessing: Bool
 
         func stopAccessing() {
             if didStartAccessing {
-                url.stopAccessingSecurityScopedResource()
+                scopedURL.stopAccessingSecurityScopedResource()
             }
         }
     }
@@ -65,17 +67,23 @@ final class SettingsStore {
         defaults.data(forKey: Key.codexHomeBookmark) != nil
     }
 
-    func saveCodexHomeAccess(url: URL) throws {
+    func saveCodexHomeAccess(url: URL, relativePath: String? = nil) throws {
         let bookmark = try url.bookmarkData(
             options: [.withSecurityScope],
             includingResourceValuesForKeys: nil,
             relativeTo: nil
         )
         defaults.set(bookmark, forKey: Key.codexHomeBookmark)
+        if let relativePath, !relativePath.isEmpty {
+            defaults.set(relativePath, forKey: Key.codexHomeRelativePath)
+        } else {
+            defaults.removeObject(forKey: Key.codexHomeRelativePath)
+        }
     }
 
     func clearCodexHomeAccess() {
         defaults.removeObject(forKey: Key.codexHomeBookmark)
+        defaults.removeObject(forKey: Key.codexHomeRelativePath)
     }
 
     func startCodexHomeAccess() throws -> ScopedCodexHomeAccess? {
@@ -84,7 +92,7 @@ final class SettingsStore {
         }
 
         var isStale = false
-        let url = try URL(
+        let scopedURL = try URL(
             resolvingBookmarkData: bookmark,
             options: [.withSecurityScope],
             relativeTo: nil,
@@ -92,11 +100,17 @@ final class SettingsStore {
         )
 
         if isStale {
-            try saveCodexHomeAccess(url: url)
+            try saveCodexHomeAccess(url: scopedURL, relativePath: defaults.string(forKey: Key.codexHomeRelativePath))
         }
 
-        let didStart = url.startAccessingSecurityScopedResource()
-        return ScopedCodexHomeAccess(url: url, didStartAccessing: didStart)
+        let didStart = scopedURL.startAccessingSecurityScopedResource()
+        let effectiveURL: URL
+        if let relativePath = defaults.string(forKey: Key.codexHomeRelativePath), !relativePath.isEmpty {
+            effectiveURL = scopedURL.appendingPathComponent(relativePath, isDirectory: true)
+        } else {
+            effectiveURL = scopedURL
+        }
+        return ScopedCodexHomeAccess(url: effectiveURL, scopedURL: scopedURL, didStartAccessing: didStart)
     }
 
     static func defaultCodexHomeURL() -> URL {

@@ -623,7 +623,19 @@ final class CodexAppServer: @unchecked Sendable {
     }
 
     private func readLocalQuotaFallback() throws -> QuotaData {
-        let codexHome = activeCodexHomeAccess?.url ?? SettingsStore.defaultCodexHomeURL()
+        if let activeCodexHomeAccess {
+            return try readLocalQuotaFallback(codexHome: activeCodexHomeAccess.url)
+        }
+
+        if let access = try SettingsStore.shared.startCodexHomeAccess() {
+            defer { access.stopAccessing() }
+            return try readLocalQuotaFallback(codexHome: access.url)
+        }
+
+        return try readLocalQuotaFallback(codexHome: SettingsStore.defaultCodexHomeURL())
+    }
+
+    private func readLocalQuotaFallback(codexHome: URL) throws -> QuotaData {
         let candidateRoots = [
             codexHome.appendingPathComponent("sessions", isDirectory: true),
             codexHome.appendingPathComponent("archived_sessions", isDirectory: true),
